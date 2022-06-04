@@ -1,17 +1,17 @@
 const {User} = require('../models');
-const {AuthenticationError, UserInputError} = require('apollo-server-express');
+const {AuthenticationError} = require('apollo-server-express');
 const {signToken} = require('../utils/auth');
 
 const resolvers = {
     Query: {
-        async: (parent, args, context) =>{
+        me: async (parent, args, context) => {
             if(context.user){
                 return User.findOne({ _id: context.user._id});
             }
             throw new AuthenticationError('please log in.');
         }
     },
-    Mutation: {
+    Mutations: {
         login: async(parent, {email,password}) => {
             const user = await User.findOne({email});
             if(!user){
