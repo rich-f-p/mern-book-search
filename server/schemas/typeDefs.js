@@ -28,6 +28,23 @@ type Auth {
     user: User
 }
 
+
+input BookData {
+    bookId: String
+    authors: [String]
+    description: String
+    title: String
+    image: String
+    link: String
+}
+
+type Mutations {
+    login(email: String!, password: String!): Auth
+    addUser(username: String!, email: String!, password: String!): Auth
+    saveBook(book: BookData!): User
+    removeBook(bookId: String!): User
+}
+
 `;
 
 module.exports = typeDefs;
