@@ -6,7 +6,7 @@ import SavedBooks from './pages/SavedBooks';
 import Navbar from './components/Navbar';
 import { setContext } from '@apollo/client/link/context'
 
-const httpLink = new ApolloClient({
+const httpLink = new createHttpLink({
   uri: '/graphql',
 });
 
