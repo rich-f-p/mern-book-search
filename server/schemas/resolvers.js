@@ -11,7 +11,7 @@ const resolvers = {
             throw new AuthenticationError('please log in.');
         }
     },
-    Mutations: {
+    Mutation: {
         login: async(parent, {email,password}) => {
             const user = await User.findOne({email});
             if(!user){
